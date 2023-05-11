@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  mysql:
+    container_name: saechim_sql
+    image: mysql:8.0.30
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/initdb.d:/docker-entrypoint-initdb.d # 컨테이너 시작시 docker-entrypoint-initdb.d 폴더에 있는 sql 파일을 실행
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=saechim_local
+      - MYSQL_USER=saechim
+      - MYSQL_PASSWORD=saechim
+      - MYSQL_ROOT_PASSWORD=saechim
+      - TZ=Asia/Seoul
