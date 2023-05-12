@@ -8,11 +8,11 @@ import jakarta.persistence.*
 class PackageEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+        val packageSeq: Long? = null,
 
         var packageName: String,
 
-        var count: Int,
+        var count: Int? = null,
 
         var period: Int
 

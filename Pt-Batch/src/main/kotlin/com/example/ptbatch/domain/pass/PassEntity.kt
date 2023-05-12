@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 class PassEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+        val passSeq: Long? = null,
 
         var packageSeq: Long,
 

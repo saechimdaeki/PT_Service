@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 class BookingEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+        val bookingSeq: Long? = null,
 
         var passSeq: Long,
 
