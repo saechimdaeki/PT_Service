@@ -12,7 +12,7 @@ import org.springframework.transaction.PlatformTransactionManager
 
 // @EnableBatchProcessing 을 붙이면 동작하지 않는다..? springboot3에서 (알아보고 수정하기)
 @Configuration
-class JobConfig(
+class BatchConfig(
         private val jobRepository: JobRepository,
         private val transactionManager: PlatformTransactionManager
 ) {

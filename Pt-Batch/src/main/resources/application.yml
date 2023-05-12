@@ -1,14 +1,30 @@
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/saechim_local?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: saechim
+    password: saechim
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20 # default = 10
+
+  batch:
+    jdbc:
+      initialize-schema: always
+
+
+
+---
+
+spring:
   config:
     activate:
-      on-profile: default
+      on-profile: local
   datasource:
     url: jdbc:h2:mem:testdb
     username: local
     password: local
     driver-class-name: org.h2.Driver
 
----
 
 
 
