@@ -6,12 +6,16 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     hikari:
       maximum-pool-size: 20 # default = 10
-
   batch:
     jdbc:
       initialize-schema: always
+  jpa:
+    hibernate:
+      ddl-auto: none
 
-
+kakaotalk:
+  host: https://kapi.kakao.com
+  token: saechimSecret
 
 ---
 

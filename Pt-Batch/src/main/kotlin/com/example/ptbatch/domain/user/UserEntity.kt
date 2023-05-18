@@ -16,8 +16,17 @@ class UserEntity(
 
         var phone: String,
 
-        var meta: String
+        @Convert(converter = MetaJsonConverter::class)
+        val meta : Map<String, Any>
 
 
 ) : BaseEntity() {
+    fun getUuid(): String? {
+        var uuid: String? = null
+
+        if (meta.containsKey("uuid")) {
+            uuid = meta["uuid"]!!.toString()
+        }
+        return uuid
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.ptbatch.domain.booking
 
 import com.example.ptbatch.domain.common.BaseEntity
+import com.example.ptbatch.domain.user.UserEntity
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -26,7 +27,11 @@ class BookingEntity(
 
         var endedAt: LocalDateTime,
 
-        var cancelledAt: LocalDateTime
+        var cancelledAt: LocalDateTime,
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "userId", insertable = false, updatable = false)
+        var userEntity: UserEntity
 
 
 ) : BaseEntity() {
