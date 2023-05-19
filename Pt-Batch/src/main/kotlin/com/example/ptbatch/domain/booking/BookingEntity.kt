@@ -1,7 +1,9 @@
 package com.example.ptbatch.domain.booking
 
 import com.example.ptbatch.domain.common.BaseEntity
+import com.example.ptbatch.domain.pass.PassEntity
 import com.example.ptbatch.domain.user.UserEntity
+import io.netty.util.concurrent.Future
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -31,7 +33,11 @@ class BookingEntity(
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "userId", insertable = false, updatable = false)
-        var userEntity: UserEntity
+        var userEntity: UserEntity,
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "passSeq", insertable = false, updatable = false)
+        var passEntity: PassEntity
 
 
 ) : BaseEntity() {
