@@ -10,35 +10,39 @@ import java.time.LocalDateTime
 @Entity
 @Table(name = "booking")
 class BookingEntity(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val bookingSeq: Long? = null,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val bookingSeq: Long? = null,
 
-        var passSeq: Long,
+    var passSeq: Long,
 
-        var userId: String,
+    var userId: String,
 
-        var usedPass: Boolean,
+    var usedPass: Boolean,
 
-        var attended: Boolean,
+    var attended: Boolean,
 
-        @Enumerated(EnumType.STRING)
-        var status: BookingStatus,
+    @Enumerated(EnumType.STRING)
+    var status: BookingStatus,
 
-        var startedAt: LocalDateTime,
+    var startedAt: LocalDateTime,
 
-        var endedAt: LocalDateTime,
+    var endedAt: LocalDateTime,
 
-        var cancelledAt: LocalDateTime,
+    var cancelledAt: LocalDateTime,
 
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "userId", insertable = false, updatable = false)
-        var userEntity: UserEntity,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", insertable = false, updatable = false)
+    var userEntity: UserEntity,
 
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "passSeq", insertable = false, updatable = false)
-        var passEntity: PassEntity
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "passSeq", insertable = false, updatable = false)
+    var passEntity: PassEntity
 
 
 ) : BaseEntity() {
+
+    fun getStatisticsAt(): LocalDateTime {
+        return endedAt.withHour(0).withMinute(0).withSecond(0).withNano(0)
+    }
 }
