@@ -92,3 +92,15 @@ CREATE TABLE `notification`
     `modified_at`      timestamp              DEFAULT NULL COMMENT '수정 일시',
     PRIMARY KEY (`notification_seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='알람';
+
+
+create table `statistics`
+(
+    `statistics_seq` bigint not null auto_increment comment '통계 순번',
+    `statistics_at` timestamp not null comment '통계 일시',
+    `all_count` int not null default 0 comment '전체 횟수',
+    `attended_count` int not null default 0 comment '출석 횟수',
+    `cancelled_count` int not null default 0 comment '취소 횟수',
+    primary key (`statistics_seq`),
+    index idx_statistics_at (`statistics_at`)
+)engine=InnoDB default charset=utf8mb4 comment='통계';
